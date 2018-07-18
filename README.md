@@ -5,9 +5,8 @@ Zadania:
 1. Utworzyć następujące modele (na razie bez uwzględniania relacji):
    - Model dla encji City
    - Model dla encji Country
-   - Model dla encji CountryLanguage
 2. Dodać do powyższych informacje o relacjach.
 3. Napisać programy realizujące, przy pomocy HQL, następujące zadania (najpierw w wersji "na sztywno", później z parametrem):
    - Wyświetlić wszystkie państwa wraz z ich kodami
    - Wyświetlić wszystkie miasta z zadanego kraju wraz z ich regionami
-   - Wyświetlić wszystkie języki używane w danym kraju
+4. Napisać program dodający nowy (fikcyjny kraj) i kilka miast do niego.
