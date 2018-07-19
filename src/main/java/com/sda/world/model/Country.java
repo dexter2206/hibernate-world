@@ -24,6 +24,9 @@ public class Country {
     @OneToMany(mappedBy="country", fetch = FetchType.LAZY)
     private Set<City> cities;
 
+    @OneToMany(mappedBy="country", fetch = FetchType.LAZY)
+    private Set<CountryLanguage> languages;
+
     public Country() {}
 
     public String getCode() {
@@ -64,5 +67,13 @@ public class Country {
 
     public void setCities(Set<City> cities) {
         this.cities = cities;
+    }
+
+    public Set<CountryLanguage> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(Set<CountryLanguage> languages) {
+        this.languages = languages;
     }
 }
