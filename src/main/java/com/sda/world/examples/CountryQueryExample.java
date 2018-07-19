@@ -15,10 +15,10 @@ public class CountryQueryExample {
         try (SessionFactory factory = new Configuration().configure().buildSessionFactory();
              Session session = factory.openSession()) {
             Query<Country> query = session.createQuery("FROM Country c " +
-                    "JOIN FETCH c.capital WHERE c.code='POL'");
-            poland = query.uniqueResult();
-
+                    "JOIN FETCH c.cities " +
+                    "WHERE c.code=:code");
+            poland = query.setParameter("code", "POL").uniqueResult();
+            poland.getCities().stream().forEach(city -> System.out.println(city.getName()));
         }
-        System.out.println(poland.getName() + " " + poland.getCapital().getName());
     }
 }

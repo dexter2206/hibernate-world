@@ -1,6 +1,7 @@
 package com.sda.world.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="country")
@@ -19,6 +20,9 @@ public class Country {
 
     @Column(name="Code2")
     private String code2;
+
+    @OneToMany(mappedBy="country", fetch = FetchType.LAZY)
+    private Set<City> cities;
 
     public Country() {}
 
@@ -52,5 +56,13 @@ public class Country {
 
     public void setCode2(String code2) {
         this.code2 = code2;
+    }
+
+    public Set<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(Set<City> cities) {
+        this.cities = cities;
     }
 }

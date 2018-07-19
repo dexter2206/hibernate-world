@@ -9,11 +9,13 @@ import org.hibernate.query.Query;
 public class CityQueryExample {
 
     public static void main(String[] args) {
+
         try(SessionFactory factory = new Configuration().configure().buildSessionFactory();
             Session session = factory.openSession()) {
-            Query<City> query = session.createQuery("FROM City");
+            Query<City> query = session.createQuery("FROM City c " +
+                            "WHERE c.country.name='France'");
             query.setMaxResults(10);
-            query.getResultStream().forEach(city -> System.out.println(city.getName()));
+            query.stream().forEach(System.out::println);
         }
     }
 }

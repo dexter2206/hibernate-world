@@ -14,8 +14,9 @@ public class City {
     @Column(name="Name")
     private String name;
 
-    @Column(name="CountryCode")
-    private String countryCode;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="CountryCode")
+    private Country country;
 
     @Column(name="District")
     private String district;
@@ -38,20 +39,20 @@ public class City {
         this.name = name;
     }
 
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
-    }
-
     public String getDistrict() {
         return district;
     }
 
     public void setDistrict(String district) {
         this.district = district;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }
 
