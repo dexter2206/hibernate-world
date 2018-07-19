@@ -28,5 +28,6 @@
 
         <mapping class="com.sda.world.model.City"/>
         <mapping class="com.sda.world.model.Country"/>
+        <mapping class="com.sda.world.model.CountryLanguage"/>
     </session-factory>
 </hibernate-configuration>
