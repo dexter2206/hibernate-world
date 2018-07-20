@@ -1,6 +1,7 @@
 package com.sda.world.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,8 +22,8 @@ public class Country {
     @Column(name="Code2")
     private String code2;
 
-    @OneToMany(mappedBy="country", fetch = FetchType.LAZY)
-    private Set<City> cities;
+    @OneToMany(mappedBy="country", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<City> cities;
 
     @OneToMany(mappedBy="country", fetch = FetchType.LAZY)
     private Set<CountryLanguage> languages;
@@ -61,11 +62,11 @@ public class Country {
         this.code2 = code2;
     }
 
-    public Set<City> getCities() {
+    public List<City> getCities() {
         return cities;
     }
 
-    public void setCities(Set<City> cities) {
+    public void setCities(List<City> cities) {
         this.cities = cities;
     }
 
@@ -75,5 +76,12 @@ public class Country {
 
     public void setLanguages(Set<CountryLanguage> languages) {
         this.languages = languages;
+    }
+
+    public void addCity(City city) {
+        if(city != null) {
+            this.cities.add(city);
+            city.setCountry(this);
+        }
     }
 }
